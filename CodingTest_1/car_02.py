@@ -3,10 +3,10 @@ import numpy as np
 
 df = pd.read_csv("taxi_record_2.csv")
 
-dfn = pd.DataFrame(df.values, columns=['カラム名1','カラム名2'])
+dfn = pd.DataFrame(df.values, columns=['時間','走行距離'])
 print(df.columns)
-print(dfn['カラム名2'])
-
+loads = dfn['走行距離'].sum()
+print(loads)
 """
 with open('taxi_record_2.csv') as f:
     lines = f.readlines()
