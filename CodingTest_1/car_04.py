@@ -28,7 +28,12 @@ dfn['a_diff'] = dfn['a'].diff(1) #-> 0 days 00:00:02.878000
 dfn['a_diff'] = dfn['a_diff'] / np.timedelta64(1, 's')
 
 dfn['speed'] = dfn['b']/dfn['a_diff']
+low_Minitus = 0
+for i in range(4):
+    if dfn['speed'][i] < 9:
+        low_Minitus += dfn['a_diff'][i]
 
+print(low_Minitus)
 print(dfn)
 #DFN['a'] = pd.to_datetime['a']
 #df.time = pd.to_datetime(DFN['a'], format='%H%M%S%f')
