@@ -59,20 +59,4 @@ class Record:
 
 #↓改修中。
     def midnight_load(self,dfn):
-        midnight_Minutes = 0
 
-        nums = len(dfn.index)  # print('このカラムの長さは：' + str(num))
-        for i in range(nums):
-            if dfn['時間'][i] <= 14:00:00.000
-                low_Minutes += dfn['時間_diff'][i]
-
-
-from_dt = datetime(2017, 6, 10)
-to_dt = datetime(2017, 6, 20)
-    for target in targets:
-        if from_dt <= target <= to_dt:  # 6/20より小さく6/10よりも大きい
-            print
-            target
-
-        # 端数は切り捨て
-        low_Minutes = math.ceil(low_Minutes)
