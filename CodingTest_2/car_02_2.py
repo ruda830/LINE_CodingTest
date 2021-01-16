@@ -23,6 +23,11 @@ if __name__ == '__main__':
     #低速スピードの時間を収集、記録
     all_low_Minutes = record.lowspeed_time(dfn_1)
     print('総低速時間は：' + str(all_low_Minutes)+'秒です。')
+
+    #深夜時間帯走行距離の収集、算出
+    all_midnight_loads = record.midnight_load_bool(dfn_1)
+    all_midnight_loads_calc = all_midnight_loads*1.25
+    print('深夜時間帯走行距離は：' + str(all_midnight_loads) + 'mですが、'+str(all_midnight_loads_calc) + 'mとして換算します。')
     #print(dfn_1)
 
     # ≺運賃計算編:used class Taxi≻-------------------

@@ -21,13 +21,14 @@ class Taxi:
         return self.teisoku_money
 
     #改修中
+    """
     def shinya(self, midnight_load):
         # 22時超えてからの走行距離をもとに、×1.25の金額補正を行う
         nums = int(midnight_load 237)
         for num in range(nums):
             self.kasan_money += 80
         return self.kasan_money
-
+    """
 
 
     def unchin(self):
