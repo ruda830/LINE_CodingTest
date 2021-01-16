@@ -7,9 +7,17 @@ import car_02_3
 
 
 if __name__ == '__main__':
+    #インスタンス生成
     record = car_02_3.Record()
+    #データフレーム作製
     dfn_1 = record.make_df('taxi_record_4.csv')
-    print(record.load_calc(dfn_1))
+    #総走行距離を算出
+    all_load = record.load_calc(dfn_1)
+    print('総走行距離は：'+str(all_load))
+    #各スピードを計算
+    every_speed = record.speed_calc(dfn_1)
+    #print('各スピードは：'+str(every_speed))
+
 
     print(dfn_1)
 
