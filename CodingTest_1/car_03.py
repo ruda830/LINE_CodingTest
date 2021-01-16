@@ -5,6 +5,7 @@ class Taxi:
     def __init__(self):
         self.hatu_money = 410
         self.kasan_money = 0
+        self.teisoku_money = 0
 
 
     def kasan(self, load):
@@ -14,10 +15,20 @@ class Taxi:
             self.kasan_money += 80
         return self.kasan_money
 
+    def teisoku(self, low_Minutes):
+        # 低速運行の合計時間から低速運賃の金額を算出、計算
+        teisoku_nums = int(low_Minutes/90)
+        for teisoku_num in range(teisoku_nums):
+            self.teisoku_money += 80
+        return self.teisoku_money
+
+
+
+
     def unchin(self):
         # unchinの合計を出力
         # 本当は 関数内で unchin = self.hatu_money + self.kasan_money としたいのに出来ない…。
-        return self.hatu_money + self.kasan_money
+        return self.hatu_money + self.kasan_money + self.teisoku_money
 
     def taxi_step(self):
         print("0")

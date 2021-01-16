@@ -32,18 +32,18 @@ dfn['a_diff'] = dfn['a_diff'] / np.timedelta64(1, 's')
 dfn['speed'] = dfn['b']/dfn['a_diff']
 
 #低速運行の時に時間を記録する。2.78m/s以下。
-low_Minitus = 0
+low_Minutes = 0
 print(dfn.index)
 num = len(dfn.index)
 print('このカラムの長さは：'+str(num))
 for i in range(num):
     if dfn['speed'][i] >= 20.778:
-        low_Minitus += dfn['a_diff'][i]
+        low_Minutes += dfn['a_diff'][i]
 
-print('合計低速時間は：'+str(format(low_Minitus, '.3f')+'秒です。'))
+print('合計低速時間は：'+str(format(low_Minutes, '.3f')+'秒です。'))
 print(dfn)
 
-print(24.170+3.735+0.286)
+#print(24.170+3.735+0.286)
 #DFN['a'] = pd.to_datetime['a']
 #df.time = pd.to_datetime(DFN['a'], format='%H%M%S%f')
 
