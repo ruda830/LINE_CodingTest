@@ -20,17 +20,21 @@ print(type(df))
 #読み込み
 df = pd.read_csv('taxi_record_2.csv', header=None)
 dfn = pd.DataFrame(df.values, columns=['a', 'b'])
-#datetime型に変換
-dfn['a'] = pd.to_datetime(dfn['a'])
-#差分を取る
-dfn['a_diff'] = dfn['a'].diff(1) #-> 0 days 00:00:02.878000
 
+#日付カラムをdatetime型に変換
+dfn['a'] = pd.to_datetime(dfn['a'])
+#走行時間を逐一記録する
+dfn['a_diff'] = dfn['a'].diff(1) #-> 0 days 00:00:02.878000
+#走行時間を秒数に変換
 dfn['a_diff'] = dfn['a_diff'] / np.timedelta64(1, 's')
 
+#スピードを計算(m/s)
 dfn['speed'] = dfn['b']/dfn['a_diff']
+
+#低速運行の時に時間を記録する。2.78m/s以下。
 low_Minitus = 0
 for i in range(4):
-    if dfn['speed'][i] < 9:
+    if dfn['speed'][i] <= 2.78:
         low_Minitus += dfn['a_diff'][i]
 
 print(low_Minitus)
