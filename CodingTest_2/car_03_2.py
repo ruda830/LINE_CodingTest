@@ -1,6 +1,3 @@
-import car_02 #module.py
-import car_04
-
 class Taxi:
 
     def __init__(self):
