@@ -1,10 +1,12 @@
 import pandas as pd
 import numpy as np
 import datetime
+import math
 
 
 class Record:
     """
+    #多分初期化しないと、いけない。
     def __init__(self,file):
         self.file = file
     """
@@ -39,3 +41,18 @@ class Record:
         dfn['speed'] = dfn['走行距離'] / dfn['時間_diff']
 
         return dfn['speed']
+
+    # 低速スピードの収集
+    def lowspeed_time(self, dfn):
+        # 低速運行の時に時間を記録する。2.78m/s以下。
+        low_Minutes = 0
+
+        nums = len(dfn.index) # print('このカラムの長さは：' + str(num))
+        for i in range(nums):
+            if dfn['speed'][i] <= 2.778:
+                low_Minutes += dfn['時間_diff'][i]
+        #端数は切り捨て
+        low_Minutes = math.ceil(low_Minutes)
+        # low_Minutes = format(low_Minutes, '.3f')
+        # print('これは関係ありません。合計低速時間は：' + str(format(low_Minutes, '.3f') + '秒です。'))
+        return low_Minutes

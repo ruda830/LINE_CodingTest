@@ -1,25 +1,45 @@
 import pandas as pd
 import numpy as np
 import datetime
+#データフレームの成形モジュール
 import car_02_3
-
-#データフレームを読み込むところを一括でまとめたい。
+#運賃の計算のモジュール
+import car_03_2
 
 
 if __name__ == '__main__':
+    #≺データ成形編:used class Record≻-------------------
     #インスタンス生成
     record = car_02_3.Record()
     #データフレーム作製
     dfn_1 = record.make_df('taxi_record_4.csv')
+
     #総走行距離を算出
     all_load = record.load_calc(dfn_1)
-    print('総走行距離は：'+str(all_load))
-    #各スピードを計算
+    print('総走行距離は：'+str(all_load)+'mです。')
+    #各スピードを計算、記録
     every_speed = record.speed_calc(dfn_1)
-    #print('各スピードは：'+str(every_speed))
 
+    #低速スピードの時間を収集、記録
+    all_low_Minutes = record.lowspeed_time(dfn_1)
+    print('総低速時間は：' + str(all_low_Minutes)+'秒です。')
+    #print(dfn_1)
 
-    print(dfn_1)
+    # ≺運賃計算編:used class Taxi≻-------------------
+    # インスタンス生成
+    taxi = car_03_2.Taxi()
+
+    # kasanの計算
+    taxi.kasan(all_load)
+    # teisokuの計算
+    taxi.teisoku(all_low_Minutes)
+
+    # 合計
+    goukei = taxi.unchin()
+    print("合計は" + str(goukei) + "円です。")
+
+    # 終了の合図
+    taxi.taxi_step()
 
 
 """
@@ -47,6 +67,6 @@ def teisoku_calc():
         if dfn['speed'][i] >= 20.778:
             low_Minutes += dfn['a_diff'][i]
 
-    print('合計低速時間は：' + str(format(low_Minutes, '.3f') + '秒です。'))
+    print('関係ないよ。合計低速時間は：' + str(format(low_Minutes, '.3f') + '秒です。'))
     print(dfn)
 """
