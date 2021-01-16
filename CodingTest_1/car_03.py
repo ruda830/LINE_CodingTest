@@ -1,4 +1,5 @@
 import car_02
+import car_04
 
 class Taxi:
 
@@ -37,11 +38,16 @@ class Taxi:
 if __name__ == '__main__':
     # 例)　3km　→　3000m (1052m+1948m)　→　410+640 = 1050円
     taxi = Taxi()
+
+
     while True: #?
         #loadsの入力
         action = car_02.load_calc('taxi_record_2.csv')
         #kasanの計算
         taxi.kasan(action)
+        #teisokuの計算
+        taxi.teisoku(3003.191)
+
         #合計
         goukei = taxi.unchin()
         print("合計は"+str(goukei)+"円です。")

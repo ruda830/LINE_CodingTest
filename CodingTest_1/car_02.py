@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import datetime
-"""
+
 def load_calc(file):
     df = pd.read_csv(file)
     dfn = pd.DataFrame(df.values, columns=['時間', '走行距離'])
@@ -28,10 +28,9 @@ if __name__ == '__main__':
     #print(dfn['時間'][1].second - dfn['時間'][0].second) #13:50:11.123
 
 """
-    dfn['差分'] = 0
-    for m in dfn['走行距離']:
-        dfn['差分'].loc[m +1 ] = 10
-    print(dfn)
+
+
+
     #dfn['差分'].append
 
 
@@ -59,7 +58,7 @@ if __name__ == '__main__':
     #print(type(before))
     #print(type(after))
 
-
+"""
 
 """
 with open('taxi_record_2.csv') as f:
