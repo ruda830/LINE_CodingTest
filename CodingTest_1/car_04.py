@@ -18,7 +18,7 @@ print(type(df))
 # 4  5  25  125     NaN
 """
 #読み込み
-df = pd.read_csv('taxi_record_2.csv', header=None)
+df = pd.read_csv('taxi_record_4.csv', header=None)
 dfn = pd.DataFrame(df.values, columns=['a', 'b'])
 
 #日付カラムをdatetime型に変換
@@ -33,12 +33,17 @@ dfn['speed'] = dfn['b']/dfn['a_diff']
 
 #低速運行の時に時間を記録する。2.78m/s以下。
 low_Minitus = 0
-for i in range(4):
-    if dfn['speed'][i] <= 2.78:
+print(dfn.index)
+num = len(dfn.index)
+print('このカラムの長さは：'+str(num))
+for i in range(num):
+    if dfn['speed'][i] >= 20.778:
         low_Minitus += dfn['a_diff'][i]
 
-print(low_Minitus)
+print('合計低速時間は：'+str(format(low_Minitus, '.3f')+'秒です。'))
 print(dfn)
+
+print(24.170+3.735+0.286)
 #DFN['a'] = pd.to_datetime['a']
 #df.time = pd.to_datetime(DFN['a'], format='%H%M%S%f')
 
