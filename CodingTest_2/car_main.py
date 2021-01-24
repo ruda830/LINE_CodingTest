@@ -5,11 +5,18 @@ import car_moneycalc
 
 
 if __name__ == '__main__':
-    # ≺データ成形編:used class Record≻-------------------
     # インスタンス生成
     record = car_dfcalc.Record()
-    # データフレーム作製
-    dfn_1 = record.make_df('taxi_record_4.csv')
+    try:
+
+        # データフレーム作製
+        dfn_1 = record.make_df('taxi_record_4.csv')
+    except FileNotFoundError as e:  # FileNotFoundErrorは例外クラス名
+        print("ファイルが見つかりません", e)
+    except Exception as e:  # Exceptionは、それ以外の例外が発生した場合
+        print("ファイルの読み込みエラーです", e)
+    # ≺データ成形編:used class Record≻-------------------
+
 
     # 総走行距離を算出
     all_load = record.load_calc(dfn_1)
