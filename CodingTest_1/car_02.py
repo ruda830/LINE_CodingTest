@@ -14,7 +14,7 @@ def load_calc(dfn):
 """
 def teisoku_calc():
     # 読み込み
-    df = pd.read_csv('taxi_record_4.csv', header=None)
+    df = pd.read_csv('taxi_record_1.csv', header=None)
     dfn = pd.DataFrame(df.values, columns=['a', 'b'])
 
     # 日付カラムをdatetime型に変換

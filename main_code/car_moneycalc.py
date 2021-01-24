@@ -10,10 +10,10 @@ class Taxi:
     def kasan(self, load):
         # 1052m超えてからの加算回数とその金額を計算
         nums = int((load - 1052) / 237)
-        print("デバックnums:" + str(nums))
         for num in range(nums):
             self.kasan_money += 80
-        print("デバックkasan_money:" + str(self.kasan_money))
+        print("デバック初乗り_money:" + str(self.hatu_money))
+        print("デバック加算_money:" + str(self.kasan_money))
         return self.kasan_money
 
     def teisoku(self, low_Minutes):
@@ -21,6 +21,7 @@ class Taxi:
         teisoku_nums = int(low_Minutes/90)
         for teisoku_num in range(teisoku_nums):
             self.teisoku_money += 80
+        print("デバック低速_money:" + str(self.teisoku_money))
         return self.teisoku_money
 
 
@@ -32,11 +33,9 @@ class Taxi:
 
         # 金額再計算
         nums_re = int((load_re - 1052) / 237)
-
-        print("デバックnum_re:" + str(nums_re))
         for num_re in range(nums_re):
             self.kasan_sinya_money += 80
-        print("デバックkasan_sinya_money:" + str(self.kasan_sinya_money))
+        print("デバック深夜_money:" + str(self.kasan_sinya_money - self.kasan_money))
         return self.kasan_sinya_money
 
 
