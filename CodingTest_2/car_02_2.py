@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # 深夜時間帯走行距離の収集、算出
     all_midnight_loads = record.midnight_load_bool(dfn_1)
     all_midnight_loads_calc = all_midnight_loads*1.25
-    print('深夜時間帯の実際の総走行距離は：' + str(all_midnight_loads) + 'mなので、1.25倍の'+str(all_midnight_loads_calc) + 'mとして換算します。')
+    print('その中で、深夜時間帯の実際の総走行距離は：' + str(all_midnight_loads) + 'mなので、1.25倍の'+str(all_midnight_loads_calc) + 'mとして換算します。')
     # print(dfn_1)
 
     # ≺運賃計算編:used class Taxi≻-------------------
@@ -36,12 +36,15 @@ if __name__ == '__main__':
 
     # kasanの計算
     taxi.kasan(all_load)
+    print("低速運転の計算を考慮せず、深夜時間帯走行の計算を考慮しない、料金は：" + str(taxi.sinya(all_midnight_loads, all_load)) + "円です。")
+
     # teisokuの計算
     taxi.teisoku(all_low_Minutes)
+    print("低速運転の計算を考慮した分の料金は：" + str(taxi.sinya(all_midnight_loads, all_load)) + "円です。")
 
     # sinyaの計算
-    #taxi.sinya(all_midnight_loads)
-
+    taxi.sinya(all_midnight_loads, all_load)
+    print("低速運転の計算を考慮せず、深夜時間帯走行の計算を考慮した、料金は：" + str(taxi.sinya(all_midnight_loads, all_load)) + "円です。")
 
     # 合計
     goukei = taxi.unchin()

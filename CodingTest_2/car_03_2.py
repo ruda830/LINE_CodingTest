@@ -4,6 +4,7 @@ class Taxi:
         self.hatu_money = 410
         self.kasan_money = 0
         self.teisoku_money = 0
+        self.kasan_sinya_money = 0
 
 
     def kasan(self, load):
@@ -11,6 +12,7 @@ class Taxi:
         nums = int((load - 1052) / 237)
         for num in range(nums):
             self.kasan_money += 80
+
         return self.kasan_money
 
     def teisoku(self, low_Minutes):
@@ -20,19 +22,32 @@ class Taxi:
             self.teisoku_money += 80
         return self.teisoku_money
 
-    """
-    def sinya(self, midnight_load):
-        # 22時超えてからの走行距離をもとに、×1.25の金額補正を行う
-        midnight_loads_calc = midnight_load * 1.25
+
+    def sinya(self, midnight_load, load):
+        # 22時超えてからの走行距離をもとに、金額補正を行う
+        # 補正後の総走行距離
+        addload = midnight_load * 0.25
+        load_re = load + addload
+        #print("デバック用load"+ str(load_re))
+
+        # 金額再計算
+        nums_re = int((load_re - 1052) / 237)
+        for num_re in range(nums_re):
+            self.kasan_sinya_money += 80
+        #print("デバック用kasan_sinya_money" + str(self.kasan_sinya_money))
 
 
-        return self.shinya_money
-    """
+        return self.kasan_sinya_money
+
 
     def unchin(self):
         # 運賃の合計を出力
-        # 本当は 関数内で unchin = self.hatu_money + self.kasan_money としたいのに出来ない…。
-        return self.hatu_money + self.kasan_money + self.teisoku_money
+        # kasan_moneyとkasan_sinya_moneyはどちらかがTrueのスイッチング関係
+        if self.kasan_sinya_money == 0:
+            return self.hatu_money + self.kasan_money + self.teisoku_money
+        else:
+            return self.hatu_money + self.kasan_sinya_money + self.teisoku_money
+
 
     def taxi_stop(self):
         # 終了ログ"0"を表示
