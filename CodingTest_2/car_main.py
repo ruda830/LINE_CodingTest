@@ -1,16 +1,13 @@
-import pandas as pd
-import numpy as np
-import datetime
 #データフレームの成形モジュール
-import car_02_3
+import car_dfcalc
 #運賃の計算のモジュール
-import car_03_2
+import car_moneycalc
 
 
 if __name__ == '__main__':
     # ≺データ成形編:used class Record≻-------------------
     # インスタンス生成
-    record = car_02_3.Record()
+    record = car_dfcalc.Record()
     # データフレーム作製
     dfn_1 = record.make_df('taxi_record_4.csv')
 
@@ -27,28 +24,31 @@ if __name__ == '__main__':
     # 深夜時間帯走行距離の収集、算出
     all_midnight_loads = record.midnight_load_bool(dfn_1)
     all_midnight_loads_calc = all_midnight_loads*1.25
-    print('その中で、深夜時間帯の実際の総走行距離は：' + str(all_midnight_loads) + 'mなので、1.25倍の'+str(all_midnight_loads_calc) + 'mとして換算します。')
+    print('深夜時間帯走行距離は：' + str(all_midnight_loads)+'mです。')
     # print(dfn_1)
 
     # ≺運賃計算編:used class Taxi≻-------------------
     # インスタンス生成
-    taxi = car_03_2.Taxi()
-
+    taxi = car_moneycalc.Taxi()
     # kasanの計算
     taxi.kasan(all_load)
-    print("低速運転の計算を考慮せず、深夜時間帯走行の計算を考慮しない、料金は：" + str(taxi.sinya(all_midnight_loads, all_load)) + "円です。")
-
     # teisokuの計算
     taxi.teisoku(all_low_Minutes)
-    print("低速運転の計算を考慮した分の料金は：" + str(taxi.sinya(all_midnight_loads, all_load)) + "円です。")
-
     # sinyaの計算
-    taxi.sinya(all_midnight_loads, all_load)
-    print("低速運転の計算を考慮せず、深夜時間帯走行の計算を考慮した、料金は：" + str(taxi.sinya(all_midnight_loads, all_load)) + "円です。")
-
+    taxi.kasan_sinya(all_midnight_loads, all_load)
     # 合計
     goukei = taxi.unchin()
-    print("合計は" + str(goukei) + "円です。")
+    print("総合計料金は" + str(goukei) + "円です。")
+
+    #内訳
+    print("内訳は以下のようです。「料金(考慮した条件)は：～」として表示します。")
+    print("料金(低速×、深夜×) は：" + str(taxi.kasan(all_load)) + "円です。")
+    print("追加料金は(低速〇、深夜×)：" + str(taxi.teisoku(all_low_Minutes)) + "円です。")
+    print("taxi.kasan_sinya:" + str(taxi.kasan_sinya(all_midnight_loads, all_load)))
+    print("taxi.kasan):"+str(taxi.kasan(all_load)))
+    print("追加料金は(低速×、深夜〇)：" + str(taxi.kasan_sinya(all_midnight_loads, all_load) - taxi.kasan(all_load))+ "円です。")
+
+
 
     # 終了の合図
     taxi.taxi_stop()

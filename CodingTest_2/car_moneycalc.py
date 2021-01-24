@@ -10,9 +10,10 @@ class Taxi:
     def kasan(self, load):
         # 1052m超えてからの加算回数とその金額を計算
         nums = int((load - 1052) / 237)
+        print("デバックnums:" + str(nums))
         for num in range(nums):
             self.kasan_money += 80
-
+        print("デバックkasan_money:" + str(self.kasan_money))
         return self.kasan_money
 
     def teisoku(self, low_Minutes):
@@ -23,20 +24,19 @@ class Taxi:
         return self.teisoku_money
 
 
-    def sinya(self, midnight_load, load):
+    def kasan_sinya(self, midnight_load, load):
         # 22時超えてからの走行距離をもとに、金額補正を行う
         # 補正後の総走行距離
         addload = midnight_load * 0.25
         load_re = load + addload
-        #print("デバック用load"+ str(load_re))
 
         # 金額再計算
         nums_re = int((load_re - 1052) / 237)
+
+        print("デバックnum_re:" + str(nums_re))
         for num_re in range(nums_re):
             self.kasan_sinya_money += 80
-        #print("デバック用kasan_sinya_money" + str(self.kasan_sinya_money))
-
-
+        print("デバックkasan_sinya_money:" + str(self.kasan_sinya_money))
         return self.kasan_sinya_money
 
 
