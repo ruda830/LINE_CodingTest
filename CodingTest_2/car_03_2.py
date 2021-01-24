@@ -14,29 +14,28 @@ class Taxi:
         return self.kasan_money
 
     def teisoku(self, low_Minutes):
-        # 低速運行の合計時間から低速運賃の金額を算出、計算
+        # 低速運行の合計時間から、低速運賃の金額を算出
         teisoku_nums = int(low_Minutes/90)
         for teisoku_num in range(teisoku_nums):
             self.teisoku_money += 80
         return self.teisoku_money
 
-    #改修中
     """
-    def shinya(self, midnight_load):
+    def sinya(self, midnight_load):
         # 22時超えてからの走行距離をもとに、×1.25の金額補正を行う
-        nums = int(midnight_load 237)
-        for num in range(nums):
-            self.kasan_money += 80
-        return self.kasan_money
-    """
+        midnight_loads_calc = midnight_load * 1.25
 
+
+        return self.shinya_money
+    """
 
     def unchin(self):
-        # unchinの合計を出力
+        # 運賃の合計を出力
         # 本当は 関数内で unchin = self.hatu_money + self.kasan_money としたいのに出来ない…。
         return self.hatu_money + self.kasan_money + self.teisoku_money
 
-    def taxi_step(self):
+    def taxi_stop(self):
+        # 終了ログ"0"を表示
         print("0")
 
 
