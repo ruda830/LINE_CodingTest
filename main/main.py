@@ -11,39 +11,27 @@ import moneycalc  # 運賃計算
 
 if __name__ == '__main__':
     try:
-        # ≺データ成形編:used class Record≻-------------------
+        # データ成形(used class Record)
+        rd = dfcalc.Record()
+        dfn_1 = rd.make_df('../taxi_record/record_2.csv')
+        # 総走行距離、スピード算出
+        all_load = rd.load_calc(dfn_1)
+        every_speed = rd.speed_calc(dfn_1)
+        all_low_Minutes = rd.lowspeed_time(dfn_1)
+        all_midnight_loads = rd.midnight_load_bool(dfn_1)
 
-        # インスタンス生成
-        record = dfcalc.Record()
-        dfn_1 = record.make_df('../taxi_record/record_2.csv')
-        # 総走行距離を算出
-        all_load = record.load_calc(dfn_1)
+        # 運賃計算(used class Taxi)
+        taxi = moneycalc.Taxi()
+        taxi.kasan_sinya(all_midnight_loads, all_load)
+        taxi.teisoku(all_low_Minutes)
+        goukei = taxi.unchin()
+        print(goukei)
+
+
         print('総走行距離は：' + str(all_load) + 'mです。')
-        # 各スピードを計算、記録
-        every_speed = record.speed_calc(dfn_1)
-
-        # 低速スピードの時間を収集、記録
-        all_low_Minutes = record.lowspeed_time(dfn_1)
         print('低速時間は：' + str(all_low_Minutes) + '秒です。')
-
-        # 深夜時間帯走行距離の収集、算出
-        all_midnight_loads = record.midnight_load_bool(dfn_1)
         all_midnight_loads_calc = all_midnight_loads * 1.25
         print('深夜時間帯走行距離は：' + str(all_midnight_loads) + 'mです。')
-        # print(dfn_1)
-
-        # ≺運賃計算編:used class Taxi≻-------------------
-
-        # インスタンス生成
-        taxi = moneycalc.Taxi()
-        # kasanの計算
-        taxi.kasan_sinya(all_midnight_loads, all_load)
-        # teisokuの計算
-        taxi.teisoku(all_low_Minutes)
-        # sinyaの計算
-
-        # 合計
-        goukei = taxi.unchin()
         print("総合計料金(初乗り＋加算＋低速＋深夜)は" + str(goukei) + "円です。")
 
 
