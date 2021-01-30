@@ -63,12 +63,6 @@ if __name__ == '__main__':
     print("追加料金は(低速×、深夜〇)：" + str(taxi.kasan_sinya(all_midnight_loads, all_load) - taxi.kasan(all_load))+ "円です。")
     """
 
-
-
-
-
-
-
 """
 #以下、モジュール化する前の直コード。何かあった時用。
 # 読み込み
