@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
         # インスタンス生成
         record = dfcalc.Record()
-        dfn_1 = record.make_df('../taxi_record/record_1.csv')
+        dfn_1 = record.make_df('../taxi_record/record_2.csv')
         # 総走行距離を算出
         all_load = record.load_calc(dfn_1)
         print('総走行距離は：' + str(all_load) + 'mです。')
@@ -37,17 +37,16 @@ if __name__ == '__main__':
         # インスタンス生成
         taxi = moneycalc.Taxi()
         # kasanの計算
-        taxi.kasan(all_load)
+        taxi.kasan_sinya(all_midnight_loads, all_load)
         # teisokuの計算
         taxi.teisoku(all_low_Minutes)
         # sinyaの計算
-        taxi.kasan_sinya(all_midnight_loads, all_load)
+
         # 合計
         goukei = taxi.unchin()
         print("総合計料金(初乗り＋加算＋低速＋深夜)は" + str(goukei) + "円です。")
 
-        # 終了の合図
-        taxi.taxi_stop()
+
 
     except FileNotFoundError as e:
         print("ファイルが見つかりません", e)
