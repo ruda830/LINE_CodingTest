@@ -1,18 +1,18 @@
-##ファイル構成
+# ファイル構成
 * Requirement_definition_document.md : 要件定義書
-* main : 実行時のメインファイル。
-* taxi_record : タクシーレコードデータ。
+* main : 実行時のメインディレクトリ。
+* taxi_record : タクシーレコードデータのディレクトリ。
 
+# 内容
 
-
-#### mainの中身
+## main
   ```plain
   main.py       実行ファイル
   dfcalc.py     csvをデータフレームへ加工するモジュール
   moneycalc.py  運賃を算出するモジュール
   ```
 
-#### taxi_recordの中身
+## taxi_record
   ```plain
   csv           条件
   ーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -21,5 +21,3 @@
   record_3.csv  初乗り＋加算              *急発進、急停車する
   record_2.csv  初乗り＋加算＋深夜         *深夜から乗り始めた
   ```
-
-この問題はTechbowl様の提供するMISSIONです。
