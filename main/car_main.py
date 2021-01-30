@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
         # インスタンス生成
         record = car_dfcalc.Record()
-        dfn_1 = record.make_df('taxi_record_1.csv')
+        dfn_1 = record.make_df('record_1.csv')
         # 総走行距離を算出
         all_load = record.load_calc(dfn_1)
         print('総走行距離は：' + str(all_load) + 'mです。')
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 # 読み込み
 
 
-df = pd.read_csv('taxi_record_1.csv', header=None)
+df = pd.read_csv('record_1.csv', header=None)
 dfn = pd.DataFrame(df.values, columns=['a', 'b'])
 
 # 日付カラムをdatetime型に変換

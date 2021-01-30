@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
     while True: #?
         #loadsの入力
-        action = car_02.load_calc('taxi_record_2.csv')
+        action = car_02.load_calc('record_2.csv')
         #kasanの計算
         taxi.kasan(action)
         #teisokuの計算

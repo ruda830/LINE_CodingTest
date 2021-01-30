@@ -64,8 +64,8 @@ class Record:
 """
 if __name__ == '__main__':
     record = Record()
-    record.make_df('taxi_record_1.csv')
-    print(record.make_df('taxi_record_1.csv'))
+    record.make_df('record_1.csv')
+    print(record.make_df('record_1.csv'))
     record.load_calc()
     record.speed_calc()
     record.lowspeed_time()
