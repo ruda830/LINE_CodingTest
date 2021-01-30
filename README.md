@@ -1,5 +1,4 @@
 # LINE_CodingTest
-# LINEコーディングテスト
 
  この問題はTechbowl様のMISSIONです。(LINE様と共催)
 
