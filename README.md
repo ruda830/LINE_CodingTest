@@ -1,8 +1,8 @@
 ##ファイル構成
 * Requirement_definition_document.md : 要件定義書
 * main : 実行時のメインファイル。
-* taxi_record : タクシーレコードデータ。  
-  
+* taxi_record : タクシーレコードデータ。
+
 
 
 #### mainの中身
