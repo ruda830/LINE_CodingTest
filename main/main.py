@@ -34,7 +34,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
 """
-デバック用
+# デバック用
         print('総走行距離は：' + str(all_load) + 'mです。')
         print('低速時間は：' + str(all_low_Minutes) + '秒です。')
         all_midnight_loads_calc = all_midnight_loads * 1.25
