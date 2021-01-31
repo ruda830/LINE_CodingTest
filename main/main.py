@@ -27,14 +27,7 @@ if __name__ == '__main__':
         taxi.teisoku(all_low_Minutes)
         goukei = taxi.unchin()
         print(goukei)  # 円
-        """
-        # デバック用
-        print('総走行距離は：' + str(all_load) + 'mです。')
-        print('低速時間は：' + str(all_low_Minutes) + '秒です。')
-        all_midnight_loads_calc = all_midnight_loads * 1.25
-        print('深夜時間帯走行距離は：' + str(all_midnight_loads) + 'mです。')
-        print("総合計料金(初乗り＋加算＋低速＋深夜)は" + str(goukei) + "円です。")
-        """
+
         sys.exit(0)
 
     except FileNotFoundError as e:
