@@ -38,11 +38,13 @@ class Record:
     # 深夜帯運賃の計算用に、深夜時間帯の総距離を記録
     def midnight_load_bool(self, dfn):
         from_midnight = datetime.datetime(1900, 0o1, 0o1, 22, 00, 00, 000)
-        #to_midnight = datetime.datetime(1900, 0o1, 0o2, 0o5, 00, 00, 000)
+        to_midnight = datetime.datetime(1900, 0o1, 0o1, 0o5, 00, 00, 000)
 
         # 朝夜カラムにmidnjghtまたはsunの判定を記録
         dfn.loc[from_midnight <= dfn['時間'], '朝夜'] = 'midnight'
+        dfn.loc[to_midnight >= dfn['時間'], '朝夜'] = 'midnight'
         dfn.loc[from_midnight > dfn['時間'], '朝夜'] = 'sun'
+        dfn.loc[to_midnight < dfn['時間'], '朝夜'] = 'sun'
         dfn_mid = dfn.query("朝夜=='midnight'")
         midnight_loads = dfn_mid['走行距離'].sum()
         return midnight_loads
