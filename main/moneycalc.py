@@ -4,17 +4,23 @@ class Taxi:
         self.hatu_money = 410
         self.kasan_sinya_money = 0
         self.teisoku_money = 0
+        self.load = 0
         self.midnight_load = 0
         self.low_Minutes = 0
 
     def kasan_sinya(self, midnight_load, load):
         # 深夜帯運行時の総走行距離補正
+        self.load = load
         self.midnight_load = midnight_load
         addload = self.midnight_load * 0.25
-        load += addload
+        self.load += addload
 
         # 1052m超えてからの加算回数と加算金額計算
-        nums = int((load - 1052) / 237)
+        if load < 1052:
+            nums = 0
+        else:
+            nums = int((load - 1052) / 237)
+
         self.kasan_sinya_money += 80 * nums
 
         return self.kasan_sinya_money

@@ -2,7 +2,7 @@
 <img src="https://4.bp.blogspot.com/-78LRlanhYIs/VqI8UldL9RI/AAAAAAAA3QM/dzJ2ogGy_84/s800/car_taxi2.png" width=50%>
 
 #### レコードデータ(csv)を読み取り、要件定義書に書かれた方法で運賃を算出します。
-#### レコードデータディレクトリにはいくつかのエッジケースがおいてあります。
+#### レコードデータディレクトリにはいくつかのテストケースがおいてあります。
 
 
 ## 実行環境 (win, Python 3.7.2)
@@ -27,8 +27,9 @@
   ```plain
   csv           条件
   ーーーーーーーーーーーーーーーーーーーーーーーーー
-  record_1.csv  初乗り＋加算＋低速＋深夜
-  record_2.csv  初乗り＋加算＋低速
-  record_3.csv  初乗り＋加算              *急発進、急停車する
-  record_2.csv  初乗り＋加算＋深夜         *深夜から乗り始めた
+  record_1.csv  初乗り＋加算＋低速＋深夜    *基本形
+  record_2.csv  初乗り＋加算＋低速         *基本形
+  record_3.csv  初乗り＋加算        　     *急発進、急停車する
+  record_4.csv  初乗り＋加算＋深夜         *深夜から乗り始めた
+  record_5.csv  初乗り                    *乗ったけど直ぐに降りた
   ```
