@@ -9,7 +9,7 @@ class Taxi:
         self.low_Minutes = 0
 
     def kasan_sinya(self, midnight_load, load):
-        # 深夜帯運行時の総走行距離補正
+        # 先に、深夜帯運行時の走行距離補正
         self.load = load
         self.midnight_load = midnight_load
         addload = self.midnight_load * 0.25
@@ -20,9 +20,7 @@ class Taxi:
             nums = 0
         else:
             nums = int((load - 1052) / 237)
-
         self.kasan_sinya_money += 80 * nums
-
         return self.kasan_sinya_money
 
     def teisoku(self, low_Minutes):
@@ -32,10 +30,6 @@ class Taxi:
         return self.teisoku_money
 
     def unchin(self):
-        print("デバック初乗り_money:" + str(self.hatu_money))
-        print("デバック加算_深夜_money:" + str(self.kasan_sinya_money))
-        print("デバック低速_money:" + str(self.teisoku_money))
-        print("デバック深夜時間帯")
         return self.hatu_money + self.kasan_sinya_money + self.teisoku_money
 
 """
