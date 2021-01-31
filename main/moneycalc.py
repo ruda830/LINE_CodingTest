@@ -30,15 +30,17 @@ class Taxi:
         return self.teisoku_money
 
     def unchin(self):
-        return self.hatu_money + self.kasan_sinya_money + self.teisoku_money
-
-"""
-# デバック用
+        """
+        # デバック用
         print("デバック初乗り_money:" + str(self.hatu_money))
         print("デバック加算_深夜_money:" + str(self.kasan_sinya_money))
         print("デバック低速_money:" + str(self.teisoku_money))
-        print("デバック深夜時間帯")
-"""
+        """
+        return self.hatu_money + self.kasan_sinya_money + self.teisoku_money
+
+
+
+
 
 
 
