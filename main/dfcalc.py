@@ -40,9 +40,9 @@ class Record:
         from_midnight = datetime.datetime(1900, 0o1, 0o1, 22, 00, 00, 000)
         to_midnight = datetime.datetime(1900, 0o1, 0o1, 0o5, 00, 00, 000)
 
-        # 朝夜カラムにmidnjghtまたはsunの判定を記録
+        # 朝夜カラムにmidnightまたはdaytimeの判定を記録
         dfn.loc[(from_midnight <= dfn['時間']) | (to_midnight >= dfn['時間']), '朝夜'] = 'midnight'
-        dfn.loc[(from_midnight > dfn['時間']) | (to_midnight >= dfn['時間']), '朝夜'] = 'sun'
+        dfn.loc[(from_midnight > dfn['時間']) | (to_midnight >= dfn['時間']), '朝夜'] = 'daytime'
         dfn_mid = dfn.query("朝夜=='midnight'")
         midnight_loads = dfn_mid['走行距離'].sum()
         return midnight_loads
