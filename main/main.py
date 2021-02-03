@@ -14,7 +14,7 @@ if __name__ == '__main__':
     try:
         # データ成形(used class Record)
         rd = dfcalc.Record()
-        dfn_1 = rd.make_df('../taxi_record/record_5.csv')
+        dfn_1 = rd.make_df('../taxi_record/record_1.csv')
         # 総走行距離、スピード算出
         all_load = rd.load_calc(dfn_1)
         every_speed = rd.speed_calc(dfn_1)
